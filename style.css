@@ -1,0 +1,210 @@
+:root {
+    --primary: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --trash-bg: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.todo-app {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.todo-app h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.todo-app h2 svg {
+    filter: drop-shadow(0 0 8px var(--primary));
+}
+
+.row {
+    display: flex;
+    background: var(--input-bg);
+    border-radius: 16px;
+    padding: 6px;
+    margin-bottom: 30px;
+    border: 1px solid var(--card-border);
+    transition: all 0.3s ease;
+}
+
+.row:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 12px 18px;
+    font-size: 16px;
+    color: #fff;
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 12px 28px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    font-size: 16px;
+    padding: 14px 45px 14px 45px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 10px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+ul li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--card-border);
+}
+
+/* Custom Checkbox */
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--text-muted);
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+}
+
+ul li.checked {
+    color: var(--text-muted);
+}
+
+ul li.checked::before {
+    background: var(--primary);
+    border-color: var(--primary);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+ul li.checked::after {
+    content: '';
+    position: absolute;
+    left: 45px;
+    right: 45px;
+    height: 1px;
+    background: var(--text-muted);
+    top: 50%;
+    opacity: 0.5;
+}
+
+/* Delete Button */
+ul li span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+ul li span:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.controls {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.clear-btn {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid var(--card-border);
+}
+
+.clear-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: var(--text-muted);
+}
